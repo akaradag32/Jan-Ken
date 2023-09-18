@@ -9,4 +9,28 @@ window.addEventListener('load', function () {
   }
 
   selectors.startButton.addEventListener('click', startGame);
+
+  document.addEventListener('keypress', (event) => {
+    let key = event.code;
+
+    switch (key) {
+      case 'KeyA':
+        break;
+      case 'KeyS':
+        break;
+      case 'KeyD':
+        break;
+      case 'ArrowUp':
+        game.player.directionY = -1;
+        game.player.updatePosition();
+        break;
+      case 'ArrowDown':
+        game.player.directionY = 1;
+        game.player.move();
+        break;
+
+      default:
+        break;
+    }
+  });
 });
