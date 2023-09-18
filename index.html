@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Jan - ken</title>
+  </head>
+
+  <body>
+    <main>
+      <!-- #game-intro is initially shown on the game start screen -->
+      <div id="game-intro">
+        <img src="./images/logo.png" alt="" class="logo-img" />
+        <br />
+
+        <p style="font-size: x-large; font-style: italic">
+          Use the up and down keys to kontrol your character and shoot with A,S
+          and D!
+        </p>
+        <div>
+          <img src="./images/key_a.png" alt="" class="key-img" />
+          <img src="./images/key_s.png" alt="" class="key-img" />
+          <img src="./images/key_d.png" alt="" class="key-img" />
+        </div>
+        <div>
+          <img src="./images/rock.png" alt="" class="items-img" />
+          <img src="./images/paper.png" alt="" class="items-img" />
+          <img src="./images/scissors.png" alt="" class="items-img" />
+        </div>
+        <button id="start-button">Start Game</button>
+      </div>
+
+      <div id="game-container">
+        <div>
+          <h2>Stats</h2>
+          <p>Score: <span id="score">0</span></p>
+          <p>Lives: <span id="lives">3</span></p>
+        </div>
+        <!-- #game-screen is initially hidden using CSS style display: none -->
+        <div id="game-screen"></div>
+      </div>
+
+      <!-- #game-end is initially hidden using CSS style display: none -->
+      <div id="game-end">
+        <img src="./images/logo.png" alt="" class="logo-img" />
+        <h1>Game Over</h1>
+        <br />
+        <button id="restart-button">Restart</button>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="js/obstacle.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
