@@ -4,7 +4,6 @@ window.addEventListener('load', function () {
   };
 
   function startGame() {
-    debugger;
     game = new Game();
     game.start();
   }

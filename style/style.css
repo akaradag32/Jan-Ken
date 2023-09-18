@@ -10,31 +10,34 @@ body {
   
   #game-container {
     display: flex;
+    flex-direction: column;
     width: 100vw;
     padding: 20px 0px;
     justify-content: center;
+    align-items: center;
   }
   
   #game-screen {
     display: none;
+    width: 1200px;
+    min-height: 563px;
     align-content: center;
     padding: 20px 0px;
     overflow: hidden;
     position: relative;
     background-image: url(../images/bacground.jpg);
     background-size: cover;
-    animation: slide 5s linear infinite;
+    background-repeat: repeat-x;
+    animation: slide 4s linear infinite;
+  }
+
+  .score{
+    
   }
   
   @keyframes slide {
     0% {
-      background-position: 0 -1000px;
-    }
-    95% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 0 50px;
+      background-position: 1280px 0;
     }
   }
   
