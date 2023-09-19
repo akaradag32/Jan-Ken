@@ -25,11 +25,10 @@ class Player {
   }
 
   updatePosition() {
-    debugger;
-    if (this.top < 10) {
+    if (this.top + this.directionY < 10) {
       this.top = 10;
-    } else if (this.top > this.gameScreen.clientHeight - 20 - this.height) {
-      this.top = this.gameScreen.clientHeight - 20 - this.height;
+    } else if (this.top + this.directionY > this.gameScreen.clientHeight) {
+      this.top = 510;
     } else {
       this.top += this.directionY;
     }

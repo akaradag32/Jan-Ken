@@ -10,7 +10,7 @@ window.addEventListener('load', function () {
 
   selectors.startButton.addEventListener('click', startGame);
 
-  document.addEventListener('keypress', (event) => {
+  document.addEventListener('keydown', (event) => {
     let key = event.code;
 
     switch (key) {
@@ -21,11 +21,11 @@ window.addEventListener('load', function () {
       case 'KeyD':
         break;
       case 'ArrowUp':
-        game.player.directionY = -1;
-        game.player.updatePosition();
+        game.player.directionY = -100;
+        game.player.move();
         break;
       case 'ArrowDown':
-        game.player.directionY = 1;
+        game.player.directionY = 100;
         game.player.move();
         break;
 
