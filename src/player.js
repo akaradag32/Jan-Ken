@@ -24,6 +24,10 @@ class Player {
     this.element.style.top = `${this.top}px`;
   }
 
+  topPosition() {
+    return this.top;
+  }
+
   updatePosition() {
     if (this.top + this.directionY < 10) {
       this.top = 10;

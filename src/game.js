@@ -11,6 +11,7 @@ class Game {
     this.score = 0;
     this.lives = 3;
     this.gameOver = false;
+    this.isShooting = false;
   }
 
   start() {
@@ -22,10 +23,20 @@ class Game {
     this.gameLoop();
   }
 
+  shoot(elementId, top) {
+    if (!this.isShooting) {
+      this.bullets.push(new Element(this.gameScreen, elementId, 1, top));
+      this.isShooting = true;
+      setTimeout(() => {
+        this.isShooting = false;
+      }, 500);
+    }
+  }
+
   gameLoop() {
     this.update();
 
-    if (this.animateId % 300 === 0) {
+    if (this.animateId % 100 === 0) {
       console.log('Entered the animation');
       this.obstacles.push(
         new Element(
@@ -56,18 +67,20 @@ class Game {
     console.log(this.obstacles);
     const nextObstacles = [];
 
+    this.bullets.forEach((bullet) => {
+      bullet.move();
+    });
+
     this.obstacles.forEach((obstacle) => {
-      obstacle.move(); /* 
-      if (this.player.didCollide(obstacle)) {
+      obstacle.move();
+
+      if (obstacle.left < 0) {
         this.lives -= 1;
-        obstacle.element.remove();
-      } else if (obstacle.top > this.gameScreen.clientHeight) {
-        this.score += 1;
         obstacle.element.remove();
       } else {
         nextObstacles.push(obstacle);
-      } */
+      }
     });
-    //this.obstacles = nextObstacles;
+    this.obstacles = nextObstacles;
   }
 }

@@ -6,7 +6,8 @@ class Element {
     this.top = top;
     this.height = 60;
     this.width = 60;
-    this.left = this.gameScreen.clientWidth - this.width;
+    this.left =
+      this.direction === 1 ? 0 : this.gameScreen.clientWidth - this.width;
 
     this.element = document.createElement('img');
 
@@ -41,7 +42,11 @@ class Element {
   }
 
   updatePosition() {
-    this.left -= 1;
+    if (this.direction === 1) {
+      this.left += 3;
+    } else {
+      this.left -= 3;
+    }
   }
 
   didCollide() {}

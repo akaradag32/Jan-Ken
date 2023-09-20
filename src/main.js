@@ -15,10 +15,13 @@ window.addEventListener('load', function () {
 
     switch (key) {
       case 'KeyA':
+        game.shoot(1, game.player.topPosition());
         break;
       case 'KeyS':
+        game.shoot(2, game.player.topPosition());
         break;
       case 'KeyD':
+        game.shoot(3, game.player.topPosition());
         break;
       case 'ArrowUp':
         game.player.directionY = -100;
