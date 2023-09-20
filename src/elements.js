@@ -6,6 +6,7 @@ class Element {
     this.top = top;
     this.height = 60;
     this.width = 60;
+    this.crushed = false;
     this.left =
       this.direction === 1 ? 0 : this.gameScreen.clientWidth - this.width;
 
@@ -49,5 +50,22 @@ class Element {
     }
   }
 
-  didCollide() {}
+  didCollide(bullet, obstacle) {
+    const bulletRect = bullet.element.getBoundingClientRect();
+    const obstacleRect = obstacle.element.getBoundingClientRect();
+
+    if (
+      ((bullet.type === 1 && obstacle.type === 3) ||
+        (bullet.type === 2 && obstacle.type === 1) ||
+        (bullet.type === 3 && obstacle.type === 2)) &&
+      bulletRect.left < obstacleRect.right &&
+      bulletRect.right > obstacleRect.left &&
+      bulletRect.top < obstacleRect.bottom &&
+      bulletRect.bottom > obstacleRect.top
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

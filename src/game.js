@@ -64,8 +64,8 @@ class Game {
   }
 
   update() {
-    console.log(this.obstacles);
     const nextObstacles = [];
+    const nextBullets = [];
 
     this.bullets.forEach((bullet) => {
       bullet.move();
@@ -74,13 +74,28 @@ class Game {
     this.obstacles.forEach((obstacle) => {
       obstacle.move();
 
+      this.bullets.forEach((bullet) => {
+        if (bullet.didCollide(bullet, obstacle)) {
+          console.log('[-----------Collide--------------]');
+          bullet.element.remove();
+          obstacle.element.remove();
+          obstacle.crushed = true;
+        } else {
+          nextBullets.push[bullet];
+        }
+      });
+
       if (obstacle.left < 0) {
+        debugger;
         this.lives -= 1;
         obstacle.element.remove();
       } else {
-        nextObstacles.push(obstacle);
+        if (!obstacle.crushed) {
+          nextObstacles.push(obstacle);
+        }
       }
     });
+
     this.obstacles = nextObstacles;
   }
 }
