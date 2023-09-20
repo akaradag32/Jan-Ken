@@ -15,7 +15,7 @@ class Game {
   }
 
   start() {
-    console.log('Game Starts');
+    //console.log('Game Starts');
     this.startScreen.style.display = 'none';
     this.gameScreen.style.display = 'block';
     this.scoreContainer.classList.add('score');
@@ -37,7 +37,7 @@ class Game {
     this.update();
 
     if (this.animateId % 100 === 0) {
-      console.log('Entered the animation');
+      //console.log('Entered the animation');
       this.obstacles.push(
         new Element(
           this.gameScreen,
@@ -76,7 +76,7 @@ class Game {
 
       this.bullets.forEach((bullet) => {
         if (bullet.didCollide(bullet, obstacle)) {
-          console.log('[-----------Collide--------------]');
+          //console.log('[-----------Collide--------------]');
           bullet.element.remove();
           obstacle.element.remove();
           obstacle.crushed = true;
@@ -86,7 +86,6 @@ class Game {
       });
 
       if (obstacle.left < 0) {
-        debugger;
         this.lives -= 1;
         obstacle.element.remove();
       } else {
