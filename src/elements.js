@@ -20,17 +20,17 @@ class Element {
 
     switch (type) {
       case 1:
-        this.element.src = '../images/rock.png';
+        this.element.src = './images/rock.png';
         break;
       case 2:
-        this.element.src = '../images/paper.png';
+        this.element.src = './images/paper.png';
         break;
       case 3:
-        this.element.src = '../images/scissors.png';
+        this.element.src = './images/scissors.png';
         break;
 
       default:
-        this.element.src = 'images/rock.png';
+        this.element.src = './images/rock.png';
         break;
     }
   }
