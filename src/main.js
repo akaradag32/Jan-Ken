@@ -1,6 +1,7 @@
 window.addEventListener('load', function () {
   const selectors = {
     startButton: this.document.querySelector('#start-button'),
+    restartButton: this.document.querySelector('#restart-button'),
   };
 
   function startGame() {
@@ -9,6 +10,9 @@ window.addEventListener('load', function () {
   }
 
   selectors.startButton.addEventListener('click', startGame);
+  selectors.restartButton.addEventListener('click', function () {
+    window.location.reload();
+  });
 
   document.addEventListener('keydown', (event) => {
     let key = event.code;

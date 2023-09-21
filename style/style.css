@@ -46,7 +46,10 @@ body {
     }
   }
   
-  #game-end {
+  #game-end-loose {
+    display: none;
+  }
+  #game-end-win {
     display: none;
   }
   

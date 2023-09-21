@@ -3,19 +3,19 @@ class Game {
     this.startScreen = document.querySelector('#game-intro');
     this.scoreContainer = document.querySelector('#game-container > div');
     this.gameScreen = document.querySelector('#game-screen');
-    this.gameEndScreen = document.querySelector('#game-end');
+    this.gameEndScreenLoose = document.querySelector('#game-end-loose');
+    this.gameEndScreenWin = document.querySelector('#game-end-win');
     this.player = new Player(this.gameScreen, 210, 80, 100);
     this.obstacles = [];
     this.bullets = [];
     this.animateId = 0;
     this.score = 0;
     this.lives = 3;
-    this.gameOver = false;
     this.isShooting = false;
+    this.gameSpeed = 0;
   }
 
   start() {
-    //console.log('Game Starts');
     this.startScreen.style.display = 'none';
     this.gameScreen.style.display = 'block';
     this.scoreContainer.classList.add('score');
@@ -36,8 +36,13 @@ class Game {
   gameLoop() {
     this.update();
 
-    if (this.animateId % 100 === 0) {
-      //console.log('Entered the animation');
+    if (this.animateId % (150 - this.gameSpeed) === 0) {
+      this.score += 1;
+      if (this.gameSpeed < 60) {
+        setTimeout(() => {
+          this.gameSpeed += 2;
+        }, 1);
+      }
       this.obstacles.push(
         new Element(
           this.gameScreen,
@@ -52,12 +57,11 @@ class Game {
     document.getElementById('lives').innerText = this.lives;
 
     if (this.lives < 1) {
-      this.gameOver = true;
-    }
-
-    if (this.gameOver) {
       this.gameScreen.style.display = 'none';
-      this.gameEndScreen.style.display = 'block';
+      this.gameEndScreenLoose.style.display = 'block';
+    } else if (this.score === 50) {
+      this.gameScreen.style.display = 'none';
+      this.gameEndScreenWin.style.display = 'block';
     } else {
       this.animateId = requestAnimationFrame(() => this.gameLoop());
     }
@@ -76,7 +80,6 @@ class Game {
 
       this.bullets.forEach((bullet) => {
         if (bullet.didCollide(bullet, obstacle)) {
-          //console.log('[-----------Collide--------------]');
           bullet.element.remove();
           obstacle.element.remove();
           obstacle.crushed = true;

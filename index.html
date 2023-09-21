@@ -29,6 +29,9 @@
           <img src="./images/paper.png" alt="" class="items-img" />
           <img src="./images/scissors.png" alt="" class="items-img" />
         </div>
+        <p style="font-size: x-large; font-style: italic">
+          Score 50 points to Win
+        </p>
         <button id="start-button">Start Game</button>
       </div>
 
@@ -43,10 +46,17 @@
       </div>
 
       <!-- #game-end is initially hidden using CSS style display: none -->
-      <div id="game-end">
+      <div id="game-end-loose">
         <img src="./images/logo.png" alt="" class="logo-img" />
         <h1>Game Over</h1>
         <br />
+        <button id="restart-button">Restart</button>
+      </div>
+      <div id="game-end-win">
+        <img src="./images/logo.png" alt="" class="logo-img" />
+        <h1>Congradulations!</h1>
+        <br />
+        <h2>You Have Completed the game!</h2>
         <button id="restart-button">Restart</button>
       </div>
     </main>
