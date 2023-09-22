@@ -47,7 +47,7 @@ class Game {
     this.update();
 
     if (this.animateId % (100 - this.gameSpeed) === 0) {
-      if (this.gameSpeed < 80) {
+      if (this.gameSpeed < 20) {
         setTimeout(() => {
           this.gameSpeed += 2;
         }, 10);
@@ -70,7 +70,7 @@ class Game {
       this.gameEndScreenLoose.style.display = 'block';
       this.audioLoop.pause();
       this.looseAudio.play();
-    } else if (this.score === 20) {
+    } else if (this.score === 50) {
       this.gameScreen.style.display = 'none';
       this.gameEndScreenWin.style.display = 'block';
       this.audioLoop.pause();
