@@ -118,6 +118,8 @@ class Game {
 
       if (obstacle.left < 0) {
         this.lives -= 1;
+        this.lifeLostAudio.pause();
+        this.lifeLostAudio.currentTime = 0;
         this.lifeLostAudio.play();
         obstacle.element.remove();
       } else {
