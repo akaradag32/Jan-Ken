@@ -47,7 +47,7 @@ class Game {
     this.update();
 
     if (this.animateId % (100 - this.gameSpeed) === 0) {
-      if (this.gameSpeed < 60) {
+      if (this.gameSpeed < 80) {
         setTimeout(() => {
           this.gameSpeed += 2;
         }, 10);
