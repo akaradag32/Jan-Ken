@@ -47,7 +47,6 @@ class Game {
     this.update();
 
     if (this.animateId % (100 - this.gameSpeed) === 0) {
-      this.score += 1;
       if (this.gameSpeed < 60) {
         setTimeout(() => {
           this.gameSpeed += 2;
@@ -94,6 +93,8 @@ class Game {
 
       this.bullets.forEach((bullet) => {
         if (bullet.didCollide(bullet, obstacle)) {
+          this.score += 1;
+
           switch (obstacle.type) {
             case 1:
               this.crushRockAudio.play();
