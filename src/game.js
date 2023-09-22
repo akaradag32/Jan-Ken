@@ -70,7 +70,7 @@ class Game {
       this.gameEndScreenLoose.style.display = 'block';
       this.audioLoop.pause();
       this.looseAudio.play();
-    } else if (this.score === 50) {
+    } else if (this.score === 5) {
       this.gameScreen.style.display = 'none';
       this.gameEndScreenWin.style.display = 'block';
       this.audioLoop.pause();
