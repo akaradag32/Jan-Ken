@@ -5,6 +5,13 @@ class Game {
     this.gameScreen = document.querySelector('#game-screen');
     this.gameEndScreenLoose = document.querySelector('#game-end-loose');
     this.gameEndScreenWin = document.querySelector('#game-end-win');
+    this.audioLoop = document.querySelector('#myAudioLoop');
+    this.winAudio = document.querySelector('#winAudio');
+    this.looseAudio = document.querySelector('#looseAudio');
+    this.lifeLostAudio = document.querySelector('#lifeLostAudio');
+    this.crushRockAudio = document.querySelector('#crushRockAudio');
+    this.crushScissorsAudio = document.querySelector('#crushScissorsAudio');
+    this.crushPaperAudio = document.querySelector('#crushPaperAudio');
     this.player = new Player(this.gameScreen, 210, 80, 100);
     this.obstacles = [];
     this.bullets = [];
@@ -21,6 +28,9 @@ class Game {
     this.scoreContainer.classList.add('score');
 
     this.gameLoop();
+
+    this.audioLoop.loop = true;
+    this.audioLoop.play();
   }
 
   shoot(elementId, top) {
@@ -36,12 +46,12 @@ class Game {
   gameLoop() {
     this.update();
 
-    if (this.animateId % (150 - this.gameSpeed) === 0) {
+    if (this.animateId % (100 - this.gameSpeed) === 0) {
       this.score += 1;
       if (this.gameSpeed < 60) {
         setTimeout(() => {
           this.gameSpeed += 2;
-        }, 1);
+        }, 10);
       }
       this.obstacles.push(
         new Element(
@@ -59,9 +69,13 @@ class Game {
     if (this.lives < 1) {
       this.gameScreen.style.display = 'none';
       this.gameEndScreenLoose.style.display = 'block';
-    } else if (this.score === 50) {
+      this.audioLoop.pause();
+      this.looseAudio.play();
+    } else if (this.score === 20) {
       this.gameScreen.style.display = 'none';
       this.gameEndScreenWin.style.display = 'block';
+      this.audioLoop.pause();
+      this.winAudio.play();
     } else {
       this.animateId = requestAnimationFrame(() => this.gameLoop());
     }
@@ -80,6 +94,20 @@ class Game {
 
       this.bullets.forEach((bullet) => {
         if (bullet.didCollide(bullet, obstacle)) {
+          switch (obstacle.type) {
+            case 1:
+              this.crushRockAudio.play();
+              break;
+            case 2:
+              this.crushPaperAudio.play();
+              break;
+            case 3:
+              this.crushScissorsAudio.play();
+              break;
+
+            default:
+              break;
+          }
           bullet.element.remove();
           obstacle.element.remove();
           obstacle.crushed = true;
@@ -90,6 +118,7 @@ class Game {
 
       if (obstacle.left < 0) {
         this.lives -= 1;
+        this.lifeLostAudio.play();
         obstacle.element.remove();
       } else {
         if (!obstacle.crushed) {

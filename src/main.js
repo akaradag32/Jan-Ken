@@ -2,6 +2,7 @@ window.addEventListener('load', function () {
   const selectors = {
     startButton: this.document.querySelector('#start-button'),
     restartButton: this.document.querySelector('.restart-button'),
+    restartButtonWin: this.document.querySelector('.restart-button-win'),
   };
 
   function startGame() {
@@ -11,6 +12,9 @@ window.addEventListener('load', function () {
 
   selectors.startButton.addEventListener('click', startGame);
   selectors.restartButton.addEventListener('click', function () {
+    window.location.reload();
+  });
+  selectors.restartButtonWin.addEventListener('click', function () {
     window.location.reload();
   });
 

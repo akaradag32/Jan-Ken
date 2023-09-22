@@ -30,7 +30,7 @@
           <img src="./images/scissors.png" alt="" class="items-img" />
         </div>
         <p style="font-size: x-large; font-style: italic">
-          Score 50 points to Win
+          Score 20 points to Win
         </p>
         <button id="start-button">Start Game</button>
       </div>
@@ -41,11 +41,9 @@
           <p>Score: <span id="score">0</span></p>
           <p>Lives: <span id="lives">3</span></p>
         </div>
-        <!-- #game-screen is initially hidden using CSS style display: none -->
         <div id="game-screen"></div>
       </div>
 
-      <!-- #game-end is initially hidden using CSS style display: none -->
       <div id="game-end-loose">
         <img src="./images/logo.png" alt="" class="logo-img" />
         <h1>Game Over</h1>
@@ -57,9 +55,31 @@
         <h1>Congradulations!</h1>
         <br />
         <h2>You Have Completed the game!</h2>
-        <button class="restart-button">Restart</button>
+        <button class="restart-button-win">Restart</button>
       </div>
     </main>
+
+    <audio id="myAudioLoop" style="display: none" controls>
+      <source src="audio/trap_loop.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="winAudio" style="display: none" controls>
+      <source src="audio/success.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="looseAudio" style="display: none" controls>
+      <source src="audio/wah-wah.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="lifeLostAudio" style="display: none" controls>
+      <source src="audio/life_lost.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="crushRockAudio" style="display: none" controls>
+      <source src="audio/rock_break.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="crushScissorsAudio" style="display: none" controls>
+      <source src="audio/scissor_break.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="crushPaperAudio" style="display: none" controls>
+      <source src="audio/paper_break.mp3" type="audio/mpeg" />
+    </audio>
 
     <script type="text/javascript" src="src/elements.js"></script>
     <script type="text/javascript" src="src/player.js"></script>
