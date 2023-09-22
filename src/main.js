@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
   const selectors = {
     startButton: this.document.querySelector('#start-button'),
-    restartButton: this.document.querySelector('#restart-button'),
+    restartButton: this.document.querySelector('.restart-button'),
   };
 
   function startGame() {
