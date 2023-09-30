@@ -11,9 +11,11 @@ window.addEventListener('load', function () {
   }
 
   selectors.startButton.addEventListener('click', startGame);
+
   selectors.restartButton.addEventListener('click', function () {
     window.location.reload();
   });
+
   selectors.restartButtonWin.addEventListener('click', function () {
     window.location.reload();
   });
